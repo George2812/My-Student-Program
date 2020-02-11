@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Read {
 
-	public void readData(ArrayList<Student> students) {
+	public static void readData(ArrayList<Student> students, ArrayList<Course> courses) {
 		
 		boolean more=true;
 		
@@ -37,6 +37,14 @@ public class Read {
 				
 				student=new GraduateStudent(name,id,supervisor);
 			}
+			
+			String courseName=JOptionPane.showInputDialog("Enter Course Name: ");
+			
+			for(Course course: courses) {
+				if(course.getName().equals(courseName))
+					student.addCourse(course);
+			}
+			students.add(student);
 			
 			String answer=JOptionPane.showInputDialog("More Students? (Y/N)");
 			if(answer.equals("N"))
